@@ -46,7 +46,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;VclSmp.lib;vclx.lib;vcltouch.lib;xmlrtl.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <IncludePath>C:\dev_xe5\MaquetteKC\Sources\;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>C:\dev_xe5\MaquetteKC\Sources\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -103,7 +103,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <FinalOutputDir>..\exe</FinalOutputDir>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;VclSmp.bpi;vclx.bpi;vcltouch.bpi;xmlrtl.bpi</LinkPackageImports>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <IntermediateOutputDir>..\dcu</IntermediateOutputDir>
     </PropertyGroup>

@@ -122,8 +122,8 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	//Reactifs
 	double dAngleReactif = (double)((1.0 / (double)(iNbK7 * iNbReagent)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = i + iOffsetK7;
-		if (iK7Type[iK7] == 0) {
+		int iK7 = (i + iOffsetK7) % iNbK7;
+		if (iK7Type[i] == 0) {
 			for (int j = 0; j < iNbReagent; j++) {
 				double dAngle = (double)((double)((iK7 * iNbReagent) + j + 0.5) * dAngleReactif) + dDelta;
 
@@ -151,8 +151,8 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	double dAngletubeInt = (double)((1.0 / (double)(iNbK7 * iNbTubeK7Int)) * 2 * Pi);
 	double dAngletubeExt = (double)((1.0 / (double)(iNbK7 * iNbTubeK7Ext)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = i + iOffsetK7;
-		if (iK7Type[iK7] == 1) {
+		int iK7 = (i + iOffsetK7) % iNbK7;
+		if (iK7Type[i] == 1) {
 			for (int j = 0; j < iNbTubeK7Int; j++) {
 				double dAngle = (double)((double)((iK7 * iNbTubeK7Int) + j + 0.5) * dAngletubeInt) + dDelta;
 
@@ -185,8 +185,8 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	//Bouteilles
 	double dAngleBouteille = (double)((1.0 / (double)(iNbK7 * iNbBottle)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = i + iOffsetK7;
-		if (iK7Type[iK7] == 1) {
+		int iK7 = (i + iOffsetK7) % iNbK7;
+		if (iK7Type[i] == 1) {
 			for (int j = 0; j < iNbBottle; j++) {
 				double dAngle = (double)((double)((iK7 * iNbBottle) + j + 0.5) * dAngleBouteille) + dDelta;
 
@@ -210,17 +210,17 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	int iTotDil = iNbDil * iNbK7;
 	for (int i = 0; i < iTotDil; i++)
 	{
-		int iK7 = i / 2 + iOffsetK7;
-		if (iK7Type[iK7] == 1) {
+		int iK7 = (i / 2 + iOffsetK7) % iNbK7;
+		if (iK7Type[i / 2] == 1) {
 			int iDil = iK7 * 2 + (i % 2);
-			double dAngleStart = (((double)(i+0.02 ) * GetAngleObject(4))) + dDelta;
+			double dAngleStart = (((double)(iDil+0.02 ) * GetAngleObject(4))) + dDelta;
 
 			int X1 = (int)((double)Xcentre + (RayonDilExt * cos(dAngleStart)));
 			int Y1 = (int)((double)Ycentre + (RayonDilExt * sin(dAngleStart)));
 			int X4 = (int)((double)Xcentre + (RayonDilInt * cos(dAngleStart)));
 			int Y4 = (int)((double)Ycentre + (RayonDilInt * sin(dAngleStart)));
 
-			double dAngleStop = (((double)(i+0.98 ) * GetAngleObject(4))) + dDelta;
+			double dAngleStop = (((double)(iDil+0.98 ) * GetAngleObject(4))) + dDelta;
 			int X3 = (int)((double)Xcentre + (RayonDilExt * cos(dAngleStop)));
 			int Y3 = (int)((double)Ycentre + (RayonDilExt * sin(dAngleStop)));
 			int X2 = (int)((double)Xcentre + (RayonDilInt * cos(dAngleStop)));
@@ -625,4 +625,5 @@ void TFMain::DeplaceCassette(int iMouv)
 	lblDeltaCassette->Caption = IntToStr(iOffsetK7);
 	bCarousel->Click();
 }
+
 

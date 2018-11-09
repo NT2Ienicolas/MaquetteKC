@@ -91,6 +91,12 @@ object FMain: TFMain
     Width = 94
     Height = 25
     Caption = 'Carousel'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
     OnClick = bCarouselClick
   end
@@ -287,7 +293,6 @@ object FMain: TFMain
     Font.Style = []
     Lines.Strings = (
       'Todo :'
-      'K7>>et <<K7'
       'SetInfoBulle')
     ParentFont = False
     TabOrder = 16
