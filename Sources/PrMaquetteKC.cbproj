@@ -127,6 +127,10 @@
             <DependentOn>UFMain.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
+        <CppCompile Include="UFonctionsKC.cpp">
+            <DependentOn>UFonctionsKC.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
         <FormResources Include="UFMain.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
