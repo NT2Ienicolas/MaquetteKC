@@ -47,3 +47,49 @@ double GetAngleObject(int iTypeObj)
 	}
 	return dAngle;
 }
+
+/**
+ * \fn void Rotation(double dAngle, TImage *sBmp, TImage *dBmp, int iXDelta, int iYDelta)
+ * \brief Rotation...
+ *
+ * \param
+ * \return .
+ *
+ *
+ */
+void Rotation(double dAngle, TImage *sBmp, TImage *dBmp, int iXDelta, int iYDelta)
+{
+	int xDelta = iXDelta;
+	int yDelta = iYDelta;
+
+	for (int x = 0; x < sBmp->Width; x++)
+	{
+		for (int y = 0; y < sBmp->Height; y++)
+		{
+			int xt = x - sBmp->Width / 2;
+			int yt = y - sBmp->Height / 2;
+
+			int xs = (int)((cos(-dAngle) * xt - sin(-dAngle) * yt) + (sBmp->Width / 2));
+			int ys = (int)((sin(-dAngle) * xt + cos(-dAngle) * yt) + (sBmp->Height / 2));
+
+			if(xs >= 0 && xs < sBmp->Width && ys >= 0 && ys < sBmp->Height) {
+				if (sBmp->Canvas->Pixels[xs][ys] != sBmp->Canvas->Pixels[0][0])
+					dBmp->Canvas->Pixels[x+iXDelta][y+iYDelta] = sBmp->Canvas->Pixels[xs][ys];
+			}
+		}
+	}
+}
+
+/**
+ * \fn int CalculDistance(int X1, int Y1, int X2, int Y2)
+ * \brief Calcule la distance entre deux points dont on reçoit les coordonnées en paramètre
+ *
+ * \param
+ * \return Distance calculée
+ *
+ *
+ */
+int CalculDistance(int X1, int Y1, int X2, int Y2)
+{
+	return (int)sqrt(((X1 - X2) * (X1 - X2)) + (Y1 - Y2) * (Y1 - Y2));
+}

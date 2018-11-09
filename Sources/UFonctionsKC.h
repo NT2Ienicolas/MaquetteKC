@@ -12,6 +12,20 @@
 #ifndef UFonctionsKCH
 #define UFonctionsKCH
 //---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Graphics.hpp>
+//#include "cspin.h"
+//#include <Vcl.Samples.Spin.hpp>
+//#include <Vcl.Dialogs.hpp>
+//#include <System.Actions.hpp>
+//#include <Vcl.ActnList.hpp>
+//#include <Vcl.Touch.GestureMgr.hpp>
+//#include <Vcl.Grids.hpp>
+//---------------------------------------------------------------------------
 //const int DeltaNone = 0;
 //const int DeltaCons = 1;
 //const int DeltaReagent = 2;
@@ -70,5 +84,7 @@ const int BottleWidth = 50;		//  \def Largeur d'une bouteille en pixels
 //---------------------------------------------------------------------------
 
 double GetAngleObject(int iTypeObj);
+void Rotation(double dAngle, TImage *sBmp, TImage *dBmp, int iXDelta, int iYDelta);
+int CalculDistance(int X1, int Y1, int X2, int Y2);
 
 #endif
