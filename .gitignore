@@ -72,6 +72,18 @@ exe\*.*
 exe/*.*
 dcu\*.*
 dcu/*.*
+doxygen\*.*
+doxygen/*.*
+doxygen\html\*.*
+doxygen/html/*.*
+doxygen\html\search\*.*
+doxygen/html/search/*.*
+doxygen\man\*.*
+doxygen/man/*.*
+doxygen\man\man3\*.*
+doxygen/man/man3/*.*
+doxygen\rtf\*.*
+doxygen/rtf/*.*
 
 
 win32/*
