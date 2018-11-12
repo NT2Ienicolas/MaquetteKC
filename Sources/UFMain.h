@@ -52,6 +52,7 @@ __published:	// Composants gérés par l'EDI
 	TButton *bNextCassette;
 	TLabel *lblDeltaCassette;
 	TMemo *mTodo;
+	TButton *bColor;
 	void __fastcall bCarouselClick(TObject *Sender);
 	void __fastcall bInitRotationClick(TObject *Sender);
 	void __fastcall bDoRotationClick(TObject *Sender);

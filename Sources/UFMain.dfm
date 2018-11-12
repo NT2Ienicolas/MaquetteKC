@@ -12,7 +12,6 @@ object FMain: TFMain
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  ShowHint = False
   PixelsPerInch = 96
   TextHeight = 13
   object Label6: TLabel
@@ -296,6 +295,20 @@ object FMain: TFMain
       'SetInfoBulle')
     ParentFont = False
     TabOrder = 16
+  end
+  object bColor: TButton
+    Left = 906
+    Top = 711
+    Width = 94
+    Height = 22
+    Caption = 'Couleur'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 17
   end
   object tInfoBulle: TTimer
     Enabled = False

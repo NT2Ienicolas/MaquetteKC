@@ -31,7 +31,7 @@ __fastcall TFMain::TFMain(TComponent* Owner)
 {
 	xMouseDown = -1;
 	yMouseDown = -1;
-	iOffsetK7 = 0;
+	SetOffsetK7(0);
 	for (int i = 0; i < iNbK7; i++)
 		iK7Type[i] = -1;
 }
@@ -69,8 +69,8 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	}
 	TImage *imgDest = dynamic_cast<TImage*>(FindComponent(L"imgDestination"));
 
-	int RayonExt = 370;
-	int RayonInt = 150;
+	int RayonExt = RayonExtK7;
+	int RayonInt = RayonIntK7;
 	int RayonCentreRgt = (RayonExt + RayonInt) / 2;
 	int RayonTube = (RayonExt + RayonInt) / 2;
 	int RayonCentreTube = (RayonExt + RayonTube) / 2;
@@ -100,7 +100,7 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	double dDelta = - Pi / 2; //Retour pour commencer "en haut"
 	for (int i = 0; i < iNbK7; i++)
 	{
-		int iK7 = i + iOffsetK7;
+		int iK7 = i + GetOffsetK7();
 		double Angle = (((double)(iK7/* + 0.5*/) * GetAngleObject(3)) + dDelta);
 
 		int X = (int)((double)Xcentre + (RayonExt * cos(Angle)));
@@ -122,7 +122,7 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	//Reactifs
 	double dAngleReactif = (double)((1.0 / (double)(iNbK7 * iNbReagent)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = (i + iOffsetK7) % iNbK7;
+		int iK7 = (i + GetOffsetK7()) % iNbK7;
 		if (iK7Type[i] == 0) {
 			for (int j = 0; j < iNbReagent; j++) {
 				double dAngle = (double)((double)((iK7 * iNbReagent) + j + 0.5) * dAngleReactif) + dDelta;
@@ -151,7 +151,7 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	double dAngletubeInt = (double)((1.0 / (double)(iNbK7 * iNbTubeK7Int)) * 2 * Pi);
 	double dAngletubeExt = (double)((1.0 / (double)(iNbK7 * iNbTubeK7Ext)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = (i + iOffsetK7) % iNbK7;
+		int iK7 = (i + GetOffsetK7()) % iNbK7;
 		if (iK7Type[i] == 1) {
 			for (int j = 0; j < iNbTubeK7Int; j++) {
 				double dAngle = (double)((double)((iK7 * iNbTubeK7Int) + j + 0.5) * dAngletubeInt) + dDelta;
@@ -185,7 +185,7 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	//Bouteilles
 	double dAngleBouteille = (double)((1.0 / (double)(iNbK7 * iNbBottle)) * 2 * Pi);
 	for (int i = 0; i < iNbK7; i++) {
-		int iK7 = (i + iOffsetK7) % iNbK7;
+		int iK7 = (i + GetOffsetK7()) % iNbK7;
 		if (iK7Type[i] == 1) {
 			for (int j = 0; j < iNbBottle; j++) {
 				double dAngle = (double)((double)((iK7 * iNbBottle) + j + 0.5) * dAngleBouteille) + dDelta;
@@ -210,7 +210,7 @@ void __fastcall TFMain::bCarouselClick(TObject *Sender)
 	int iTotDil = iNbDil * iNbK7;
 	for (int i = 0; i < iTotDil; i++)
 	{
-		int iK7 = (i / 2 + iOffsetK7) % iNbK7;
+		int iK7 = (i / 2 + GetOffsetK7()) % iNbK7;
 		if (iK7Type[i / 2] == 1) {
 			int iDil = iK7 * 2 + (i % 2);
 			double dAngleStart = (((double)(iDil+0.02 ) * GetAngleObject(4))) + dDelta;
@@ -338,11 +338,8 @@ void __fastcall TFMain::bDoRotationClick(TObject *Sender)
  */
 void __fastcall TFMain::imgMyClick(TObject *Sender)
 {
-	ShowMessage("test");
 	int iTypeObj, iIndObj;
-	//GetClickObject(xMouseDown, yMouseDown, 1, &iTypeObj, &iIndObj);
-	iTypeObj = 1;
-	iIndObj = 1;
+	GetClickObject(dynamic_cast<TImage*>(Sender), xMouseDown, yMouseDown, 1, &iTypeObj, &iIndObj);
 	SetInfoBulle(iTypeObj, iIndObj);
 }
 
@@ -380,7 +377,8 @@ void __fastcall TFMain::imgMyMouseUp(TObject *Sender, TMouseButton Button,
 	if (Button == mbLeft)
 	{
 		int iDistance = CalculDistance(X, Y, xMouseDown, yMouseDown);
-		ShowMessage(L"Distance : " + IntToStr(iDistance));
+		if (iDistance > 10)
+			ShowMessage(L"Distance : " + IntToStr(iDistance));
 		/*
 		if (iDistance > 10)
 		{
@@ -617,13 +615,15 @@ void __fastcall TFMain::bNextCassetteClick(TObject *Sender)
  */
 void TFMain::DeplaceCassette(int iMouv)
 {
+	int iOffsetK7 = GetOffsetK7();
 	iOffsetK7 += iMouv;
 	if (iOffsetK7 < 0)
 		iOffsetK7 += iNbK7;
 	else if (iOffsetK7 >= iNbK7)
 		iOffsetK7 -= iNbK7;
 	lblDeltaCassette->Caption = IntToStr(iOffsetK7);
+	SetOffsetK7(iOffsetK7);
 	bCarousel->Click();
 }
-
+//---------------------------------------------------------------------------
 

@@ -38,13 +38,13 @@ const int iNbReagent = 4;		//  \def Nombre de réactifs par cassette
 const int iNbDil = 2;			//  \def Nombre de plaques de dilution par cassette
 const int iNbBottle = 4;		//  \def Nombre de bouteilles par cassette
 
-//const int DeltaCentreX = 0;//15;
-//const int DeltaCentreY = 0;//5;
+const int DeltaCentreX = 0;//15;
+const int DeltaCentreY = 0;//5;
 const double Pi = 3.141592653589793; //  \def valeur de pi
 
 //Rayons des K7
-//const double RayonExtK7 = 375.0;
-//const double RayonIntK7 = 270.0;
+const double RayonExtK7 = 370.0;     //  \def rayon extérieur des cassettes
+const double RayonIntK7 = 150.0;     //  \def rayon intérieur des cassettes
 
 //Rayons des centres de tube
 //const double RayonExtTube = 345.0;
@@ -83,8 +83,15 @@ const int BottleWidth = 50;		//  \def Largeur d'une bouteille en pixels
 //const TColor clrReagentSegment = clSkyBlue;
 //---------------------------------------------------------------------------
 
+int iOffsetK7 = 0; //Variable globale
+
 double GetAngleObject(int iTypeObj);
 void Rotation(double dAngle, TImage *sBmp, TImage *dBmp, int iXDelta, int iYDelta);
 int CalculDistance(int X1, int Y1, int X2, int Y2);
+void CoordMilieu(TImage *imgCarousel, int *X, int *Y);
+void GetClickObject(TImage *imgCarousel, int X, int Y, int iPrecision, int *iTypeObj, int *iIndObj);
+double GetDelta();
+void SetOffsetK7(int iVal);
+int GetOffsetK7();
 
 #endif

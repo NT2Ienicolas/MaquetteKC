@@ -84,7 +84,10 @@ doxygen\man\man3\*.*
 doxygen/man/man3/*.*
 doxygen\rtf\*.*
 doxygen/rtf/*.*
-
+scripts\*.xml
+scripts/*.xml
+scripts\*.txt
+scripts/*.txt
 
 win32/*
 __history/*
