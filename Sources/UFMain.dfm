@@ -281,10 +281,10 @@ object FMain: TFMain
     OnClick = bNextCassetteClick
   end
   object mTodo: TMemo
-    Left = 906
-    Top = 560
-    Width = 94
-    Height = 145
+    Left = 8
+    Top = 881
+    Width = 192
+    Height = 97
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -292,7 +292,8 @@ object FMain: TFMain
     Font.Style = []
     Lines.Strings = (
       'Todo :'
-      'SetInfoBulle')
+      'SetInfoBulle'
+      'M'#233'canisme de simulation du scan')
     ParentFont = False
     TabOrder = 16
   end
