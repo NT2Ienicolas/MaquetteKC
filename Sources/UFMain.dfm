@@ -153,7 +153,7 @@ object FMain: TFMain
     Width = 169
     Height = 113
     BevelOuter = bvNone
-    Color = clMoneyGreen
+    Color = clAqua
     ParentBackground = False
     TabOrder = 6
     Visible = False
