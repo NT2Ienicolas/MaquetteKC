@@ -1,2 +1,2 @@
-C:\Program Files\Git\bin\git fetch origin
-C:\Program Files\Git\bin\git merge origin/master
+C:\Progra~1\Git\bin\git fetch origin
+C:\Progra~1\Git\bin\git merge origin/master
