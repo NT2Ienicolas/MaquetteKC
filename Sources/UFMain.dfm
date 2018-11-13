@@ -153,8 +153,7 @@ object FMain: TFMain
     Width = 169
     Height = 113
     BevelOuter = bvNone
-    Caption = 'pInfoBulle'
-    Color = clPurple
+    Color = clMoneyGreen
     ParentBackground = False
     TabOrder = 6
     Visible = False
