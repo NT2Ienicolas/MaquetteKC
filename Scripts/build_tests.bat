@@ -1,7 +1,5 @@
 @ECHO OFF
-rem RunTests.bat
-rem Compile GoogleTest lib, tests projects and then run the tests of each projects
-
+rem Compile 
 rem Version 		: 1.0
 rem modifications 	: MLB /2017
 SET SCRIPT_FOLDER=%CD%
@@ -12,13 +10,7 @@ CALL "C:\Program Files (x86)\Embarcadero\RAD Studio\12.0\bin\rsvars.bat"
 
 REM COMPILE 
 cd %SRC_FOLDER%\
-call :CleanAndBuild
-
-:END
-exit
-
-:CleanAndBuild
-REM CLEAN AND BUILD
 msbuild /t:clean /p:config=Debug
 msbuild /t:make /p:config=Debug
-goto:eof
+cd 	"..\scripts"
+

@@ -4,3 +4,4 @@ rem modifications 	:
 
 cd 	"..\sources"
 cppcheck . -v --xml --enable=all --output-file=..\scripts\cppcheck.xml
+cd 	"..\scripts"

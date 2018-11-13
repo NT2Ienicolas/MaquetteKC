@@ -5,3 +5,4 @@ rem modifications 	: MLB 19/07/2017
 
 cd 	"..\sources"
 doxygen doxyfile
+cd 	"..\scripts"
