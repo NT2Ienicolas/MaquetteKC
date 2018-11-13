@@ -4,7 +4,7 @@ object FMain: TFMain
   Caption = 'Main'
   ClientHeight = 986
   ClientWidth = 1008
-  Color = clBtnFace
+  Color = clCream
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
