@@ -282,7 +282,7 @@ object FMain: TFMain
   object mTodo: TMemo
     Left = 8
     Top = 881
-    Width = 201
+    Width = 281
     Height = 97
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
