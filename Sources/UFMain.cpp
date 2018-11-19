@@ -11,9 +11,7 @@
  */
 
 //Modification du fichier pour le commit et remodifier pour le pull request
-//Puis ajout commentaire 3
-//et comm 4 ????!!!!
-//5555
+
 
 #include <vcl.h>
 #pragma hdrstop
